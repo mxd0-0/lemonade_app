@@ -97,7 +97,8 @@ fun LemonadeApp(modifier: Modifier = Modifier) {
                         text = stringResource(id = R.string.squeeze_it),
                         photo = painterResource(id = R.drawable.lemon_squeeze),
                         onImageClick = {
-                            if (squeeznumber == 0) {
+                            squeeznumber--
+                            if (squeeznumber <= 0) {
                                 currentStep = 3
                             }
                         }
@@ -136,6 +137,7 @@ fun ImageAndText(
     text: String, photo: Painter,
     onImageClick: () -> Unit,
     modifier: Modifier = Modifier
+
 
 ) {
     Column(
