@@ -1,5 +1,6 @@
 package com.example.lemonade
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -46,6 +47,7 @@ class MainActivity : ComponentActivity() {
     }
 }
 
+@SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun LemonadeApp(modifier: Modifier = Modifier) {
@@ -127,46 +129,46 @@ fun LemonadeApp(modifier: Modifier = Modifier) {
 
         }
     }
-    }
+}
 
-    @Composable
-    fun ImageAndText(
-        text: String, photo: Painter,
-        onImageClick: () -> Unit,
-        modifier: Modifier = Modifier
+@Composable
+fun ImageAndText(
+    text: String, photo: Painter,
+    onImageClick: () -> Unit,
+    modifier: Modifier = Modifier
 
+) {
+    Column(
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center,
+        modifier = modifier.fillMaxSize()
     ) {
-        Column(
-            horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.Center,
-            modifier = modifier.fillMaxSize()
-        ) {
-            Button(onClick = onImageClick) {
+        Button(onClick = onImageClick) {
 
 
-                Image(
-                    painter = photo,
-                    contentDescription = stringResource(R.string.lemon_tree1),
-                    modifier = Modifier.wrapContentSize()
-                )
-            }
-            Spacer(
-                modifier = Modifier.height(
-                    32
-                        .dp
-                )
+            Image(
+                painter = photo,
+                contentDescription = stringResource(R.string.lemon_tree1),
+                modifier = Modifier.wrapContentSize()
             )
-            Text(text = text, fontSize = 18.sp)
-
         }
+        Spacer(
+            modifier = Modifier.height(
+                32
+                    .dp
+            )
+        )
+        Text(text = text, fontSize = 18.sp)
 
     }
 
-    @Preview(showSystemUi = true)
-    @Composable
-    private fun Ll() {
-        LemonadeApp()
-    }
+}
+
+@Preview(showSystemUi = true)
+@Composable
+private fun Ll() {
+    LemonadeApp()
+}
 
 
 
